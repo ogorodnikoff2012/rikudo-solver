@@ -40,6 +40,11 @@ public class MatrixGraph implements IGraph {
   }
 
   @Override
+  public int size() {
+    return kVertexCount;
+  }
+
+  @Override
   public ArrayList<Integer> adjacentVertices(int vertex) {
     if (!hasVertex(vertex)) {
       return null;
