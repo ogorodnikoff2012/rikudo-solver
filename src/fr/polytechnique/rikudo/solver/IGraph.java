@@ -1,10 +1,10 @@
 package fr.polytechnique.rikudo.solver;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface IGraph {
   boolean hasVertex(int vertex);
   boolean hasEdge(int from, int to);
   int size();
-  ArrayList<Integer> adjacentVertices(int vertex);
+  List<Integer> adjacentVertices(int vertex);
 }

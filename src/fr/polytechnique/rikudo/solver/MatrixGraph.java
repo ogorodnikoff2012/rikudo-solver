@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MatrixGraph implements IGraph {
   private final int kVertexCount;
-  private boolean[][] edgeMatrix;
+  private final boolean[][] edgeMatrix;
 
   public MatrixGraph(int vertexCount) {
     this.kVertexCount = vertexCount;

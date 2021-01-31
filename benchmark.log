@@ -1,0 +1,823 @@
+Full Graph Test
++ Graph size: 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 38.604557 ms (38604557 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.029755 ms (29755 ns)
++ Graph size: 4
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.542331 ms (1542331 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.016911 ms (16911 ns)
++ Graph size: 6
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.396055 ms (1396055 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.027067 ms (27067 ns)
++ Graph size: 8
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 2.028631 ms (2028631 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.038973 ms (38973 ns)
++ Graph size: 10
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 2.093924 ms (2093924 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.065785 ms (65785 ns)
++ Graph size: 20
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 7.467296 ms (7467296 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.18861 ms (188610 ns)
++ Graph size: 30
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 18.890552 ms (18890552 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.238351 ms (238351 ns)
++ Graph size: 40
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 37.808309 ms (37808309 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.387013 ms (387013 ns)
++ Graph size: 50
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 44.137236 ms (44137236 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.51885 ms (518850 ns)
++ Graph size: 100
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 176.06154 ms (176061540 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.805937 ms (805937 ns)
++ Graph size: 150
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 583.22261 ms (583222610 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.77487 ms (774870 ns)
++ Graph size: 200
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1259.265726 ms (1259265726 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 1.472629 ms (1472629 ns)
++ Graph size: 250
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 2595.449976 ms (2595449976 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 2.150739 ms (2150739 ns)
++ Graph size: 300
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 4277.614795 ms (4277614795 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 3.104889 ms (3104889 ns)
+Cyclic Graph Test
++ Graph size: 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.369075 ms (369075 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.024905 ms (24905 ns)
++ Graph size: 4
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.35134 ms (351340 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.021178 ms (21178 ns)
++ Graph size: 6
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.623583 ms (623583 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.048003 ms (48003 ns)
++ Graph size: 8
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.974276 ms (974276 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.029899 ms (29899 ns)
++ Graph size: 10
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.304578 ms (1304578 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.035432 ms (35432 ns)
++ Graph size: 20
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 8.867756 ms (8867756 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.084165 ms (84165 ns)
++ Graph size: 30
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 34.804917 ms (34804917 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.102298 ms (102298 ns)
++ Graph size: 40
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 57.757699 ms (57757699 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.089468 ms (89468 ns)
++ Graph size: 50
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 38.474181 ms (38474181 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.804921 ms (804921 ns)
++ Graph size: 100
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 436.221257 ms (436221257 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.231177 ms (231177 ns)
++ Graph size: 150
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1818.714879 ms (1818714879 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.229358 ms (229358 ns)
++ Graph size: 200
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 4570.3095 ms (4570309500 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.136067 ms (136067 ns)
++ Graph size: 250
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 9619.140974 ms (9619140974 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.152466 ms (152466 ns)
++ Graph size: 300
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 18851.69158 ms (18851691580 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.180136 ms (180136 ns)
+Grid Graph Test
++ Graph size: 1 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.400205 ms (400205 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.0033 ms (3300 ns)
++ Graph size: 1 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.338257 ms (338257 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.006962 ms (6962 ns)
++ Graph size: 1 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.418237 ms (418237 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.005131 ms (5131 ns)
++ Graph size: 1 x 7
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.808113 ms (808113 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.008761 ms (8761 ns)
++ Graph size: 1 x 9
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.886464 ms (886464 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.009779 ms (9779 ns)
++ Graph size: 1 x 11
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.230487 ms (1230487 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.012681 ms (12681 ns)
++ Graph size: 1 x 13
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.557342 ms (1557342 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.01422 ms (14220 ns)
++ Graph size: 1 x 15
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 2.047468 ms (2047468 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.014679 ms (14679 ns)
++ Graph size: 2 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.281637 ms (281637 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.006426 ms (6426 ns)
++ Graph size: 2 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.58489 ms (584890 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.025913 ms (25913 ns)
++ Graph size: 2 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 4.69281 ms (4692810 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.059678 ms (59678 ns)
++ Graph size: 2 x 7
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 14.588862 ms (14588862 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.231378 ms (231378 ns)
++ Graph size: 2 x 9
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 85.664581 ms (85664581 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.417552 ms (417552 ns)
++ Graph size: 2 x 11
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 155.851939 ms (155851939 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 1.784532 ms (1784532 ns)
++ Graph size: 2 x 13
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 357.466294 ms (357466294 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 4.667171 ms (4667171 ns)
++ Graph size: 2 x 15
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 845.128044 ms (845128044 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 7.726123 ms (7726123 ns)
++ Graph size: 3 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.39079 ms (390790 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.002454 ms (2454 ns)
++ Graph size: 3 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.472667 ms (472667 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.003258 ms (3258 ns)
++ Graph size: 3 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.826043 ms (826043 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.006146 ms (6146 ns)
++ Graph size: 3 x 7
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.873482 ms (1873482 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.045393 ms (45393 ns)
++ Graph size: 3 x 9
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 7.240617 ms (7240617 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.159581 ms (159581 ns)
++ Graph size: 3 x 11
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 13.551418 ms (13551418 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 6.04083 ms (6040830 ns)
++ Graph size: 3 x 13
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 37.032799 ms (37032799 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 105.136993 ms (105136993 ns)
++ Graph size: 3 x 15
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 37.07549 ms (37075490 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 2053.923983 ms (2053923983 ns)
++ Graph size: 4 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.370167 ms (370167 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.002699 ms (2699 ns)
++ Graph size: 4 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.513915 ms (513915 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.006935 ms (6935 ns)
++ Graph size: 4 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.852875 ms (1852875 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.02042 ms (20420 ns)
++ Graph size: 4 x 7
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 6.373113 ms (6373113 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.294997 ms (294997 ns)
++ Graph size: 4 x 9
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 27.925217 ms (27925217 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 20.890995 ms (20890995 ns)
++ Graph size: 4 x 11
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 2382.800598 ms (2382800598 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 452.425178 ms (452425178 ns)
++ Graph size: 4 x 13
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 5909.229168 ms (5909229168 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 39395.379951 ms (39395379951 ns)
++ Graph size: 5 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.344843 ms (344843 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.003155 ms (3155 ns)
++ Graph size: 5 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.742523 ms (742523 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.003913 ms (3913 ns)
++ Graph size: 5 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 2.688359 ms (2688359 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.038966 ms (38966 ns)
++ Graph size: 5 x 7
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 7.451177 ms (7451177 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 6.212219 ms (6212219 ns)
++ Graph size: 5 x 9
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 18.984465 ms (18984465 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 1441.112671 ms (1441112671 ns)
++ Graph size: 6 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.347013 ms (347013 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.003607 ms (3607 ns)
++ Graph size: 6 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.150892 ms (1150892 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.029693 ms (29693 ns)
++ Graph size: 6 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 5.063902 ms (5063902 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.294262 ms (294262 ns)
++ Graph size: 6 x 7
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 17.958659 ms (17958659 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 254.697264 ms (254697264 ns)
++ Graph size: 6 x 9
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 80.008622 ms (80008622 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 143281.303908 ms (143281303908 ns)
++ Graph size: 7 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.400478 ms (400478 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.004606 ms (4606 ns)
++ Graph size: 7 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.601355 ms (1601355 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.006913 ms (6913 ns)
++ Graph size: 7 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 6.970157 ms (6970157 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 1.801148 ms (1801148 ns)
++ Graph size: 7 x 7
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 28.530136 ms (28530136 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 7837.85336 ms (7837853360 ns)
++ Graph size: 8 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.315064 ms (315064 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.00429 ms (4290 ns)
++ Graph size: 8 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 2.699654 ms (2699654 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.023916 ms (23916 ns)
++ Graph size: 8 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 12.776365 ms (12776365 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 24.287668 ms (24287668 ns)
++ Graph size: 9 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.423828 ms (423828 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.004915 ms (4915 ns)
++ Graph size: 9 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 7.500199 ms (7500199 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.089778 ms (89778 ns)
++ Graph size: 9 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 17.808754 ms (17808754 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 212.847032 ms (212847032 ns)
++ Graph size: 10 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.420475 ms (420475 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.010351 ms (10351 ns)
++ Graph size: 10 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 4.695113 ms (4695113 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.13244 ms (132440 ns)
++ Graph size: 10 x 5
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 28.045718 ms (28045718 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 2321.819144 ms (2321819144 ns)
++ Graph size: 11 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.470429 ms (470429 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.00438 ms (4380 ns)
++ Graph size: 11 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 6.216328 ms (6216328 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.401288 ms (401288 ns)
++ Graph size: 12 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.423766 ms (423766 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.002859 ms (2859 ns)
++ Graph size: 12 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 7.925077 ms (7925077 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 1.240935 ms (1240935 ns)
++ Graph size: 13 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.58454 ms (584540 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.00426 ms (4260 ns)
++ Graph size: 13 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 10.228148 ms (10228148 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 4.225147 ms (4225147 ns)
++ Graph size: 14 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.624245 ms (624245 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.003402 ms (3402 ns)
++ Graph size: 14 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 15.456896 ms (15456896 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 17.800482 ms (17800482 ns)
++ Graph size: 15 x 1
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.960558 ms (960558 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.013103 ms (13103 ns)
++ Graph size: 15 x 3
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 16.89472 ms (16894720 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 54.719222 ms (54719222 ns)
+Even Grid Graph Test
++ Graph size: 2 x 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.381287 ms (381287 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.005143 ms (5143 ns)
++ Graph size: 2 x 4
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.300243 ms (300243 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.008853 ms (8853 ns)
++ Graph size: 2 x 6
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.087608 ms (1087608 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.021557 ms (21557 ns)
++ Graph size: 2 x 8
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 5.143962 ms (5143962 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.092207 ms (92207 ns)
++ Graph size: 2 x 10
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 45.881775 ms (45881775 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.262125 ms (262125 ns)
++ Graph size: 2 x 12
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 126.811661 ms (126811661 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.834658 ms (834658 ns)
++ Graph size: 2 x 14
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 379.006782 ms (379006782 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 3.078648 ms (3078648 ns)
++ Graph size: 4 x 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 0.336449 ms (336449 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.006188 ms (6188 ns)
++ Graph size: 4 x 4
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 8.216267 ms (8216267 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.24135 ms (241350 ns)
++ Graph size: 4 x 6
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 405.406555 ms (405406555 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 7.679903 ms (7679903 ns)
++ Graph size: 4 x 8
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 9895.289855 ms (9895289855 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 284.334403 ms (284334403 ns)
++ Graph size: 4 x 10
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 30421.028934 ms (30421028934 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 9462.997873 ms (9462997873 ns)
++ Graph size: 4 x 12
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 104854.178436 ms (104854178436 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 258728.972334 ms (258728972334 ns)
++ Graph size: 6 x 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 1.143764 ms (1143764 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.021437 ms (21437 ns)
++ Graph size: 6 x 4
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 728.959689 ms (728959689 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 8.015101 ms (8015101 ns)
++ Graph size: 6 x 6
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 20987.67235 ms (20987672350 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 2811.563601 ms (2811563601 ns)
++ Graph size: 6 x 8
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 83078.036042 ms (83078036042 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 843139.895704 ms (843139895704 ns)
++ Graph size: 8 x 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 6.931427 ms (6931427 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.064264 ms (64264 ns)
++ Graph size: 8 x 4
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 8057.956334 ms (8057956334 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 287.081402 ms (287081402 ns)
++ Graph size: 8 x 6
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 101783.500984 ms (101783500984 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 840441.167891 ms (840441167891 ns)
++ Graph size: 10 x 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 45.748263 ms (45748263 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.226972 ms (226972 ns)
++ Graph size: 10 x 4
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 18958.873913 ms (18958873913 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 7966.789655 ms (7966789655 ns)
++ Graph size: 12 x 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 93.96209 ms (93962090 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 0.883482 ms (883482 ns)
++ Graph size: 12 x 4
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 118208.117775 ms (118208117775 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 255607.346104 ms (255607346104 ns)
++ Graph size: 14 x 2
++ + Solver: ReducingToSATSolver
++ + + Correct: true
++ + + Time elapsed: 518.755093 ms (518755093 ns)
++ + Solver: BacktrackingSolver
++ + + Correct: true
++ + + Time elapsed: 3.56034 ms (3560340 ns)

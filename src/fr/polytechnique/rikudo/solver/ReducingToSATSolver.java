@@ -1,6 +1,5 @@
 package fr.polytechnique.rikudo.solver;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.sat4j.core.VecInt;
@@ -10,7 +9,8 @@ import org.sat4j.specs.ISolver;
 import org.sat4j.specs.IVecInt;
 import org.sat4j.specs.TimeoutException;
 
-public class ReducingToSATSolver {
+public class ReducingToSATSolver implements IHamPathSolver {
+
   private final IGraph graph;
   private final int source;
   private final int target;
@@ -33,7 +33,8 @@ public class ReducingToSATSolver {
     this.target = target;
   }
 
-  public List<Integer> solve() throws TimeoutException {
+  @Override
+  public List<Integer> solve() {
     ISolver satSolver = SolverFactory.newDefault();
 
     try {
@@ -41,7 +42,8 @@ public class ReducingToSATSolver {
       for (int v = 0; v < graph.size(); ++v) {
         for (int i = 0; i < graph.size(); ++i) {
           for (int j = i + 1; j < graph.size(); ++j) {
-            satSolver.addClause(new VecInt(new int[]{-encodeVariable(i, v), -encodeVariable(j, v)}));
+            satSolver
+                .addClause(new VecInt(new int[]{-encodeVariable(i, v), -encodeVariable(j, v)}));
           }
         }
 
@@ -56,7 +58,8 @@ public class ReducingToSATSolver {
       for (int i = 0; i < graph.size(); ++i) {
         for (int v = 0; v < graph.size(); ++v) {
           for (int w = v + 1; w < graph.size(); ++w) {
-            satSolver.addClause(new VecInt(new int[]{-encodeVariable(i, v), -encodeVariable(i, w)}));
+            satSolver
+                .addClause(new VecInt(new int[]{-encodeVariable(i, v), -encodeVariable(i, w)}));
           }
         }
 
@@ -75,7 +78,8 @@ public class ReducingToSATSolver {
           }
 
           for (int i = 0; i < graph.size() - 1; ++i) {
-            satSolver.addClause(new VecInt(new int[]{-encodeVariable(i, u), -encodeVariable(i + 1, v)}));
+            satSolver
+                .addClause(new VecInt(new int[]{-encodeVariable(i, u), -encodeVariable(i + 1, v)}));
           }
         }
       }
@@ -84,32 +88,35 @@ public class ReducingToSATSolver {
       satSolver.addClause(new VecInt(1, encodeVariable(0, source)));
       satSolver.addClause(new VecInt(1, encodeVariable(graph.size() - 1, target)));
     } catch (ContradictionException e) {
-      // TODO Do something clever with this shituation
-      e.printStackTrace();
+      return null;
     }
 
-    if (satSolver.isSatisfiable()) {
-      int[] solution = satSolver.model();
+    try {
+      if (satSolver.isSatisfiable()) {
+        int[] solution = satSolver.model();
 
-      Integer[] result = new Integer[graph.size()];
-      for (int variable : solution) {
-        if (variable < 0) {
-          continue;
+        Integer[] result = new Integer[graph.size()];
+        for (int variable : solution) {
+          if (variable < 0) {
+            continue;
+          }
+
+          int vertex = decodeVertex(variable);
+          int index = decodeIndex(variable);
+          result[index] = vertex;
         }
 
-        int vertex = decodeVertex(variable);
-        int index = decodeIndex(variable);
-        result[index] = vertex;
+        return Arrays.asList(result);
+      } else {
+        return null;
       }
-
-      return Arrays.asList(result);
-    } else {
+    } catch (TimeoutException e) {
       return null;
     }
   }
 
   public static void main(String[] args) {
-    MatrixGraph graph = new MatrixGraph(4);
+    AdjListGraph graph = new AdjListGraph(4);
     graph.addEdge(0, 1);
     graph.addEdge(1, 0);
     graph.addEdge(1, 2);
@@ -118,20 +125,16 @@ public class ReducingToSATSolver {
     graph.addEdge(3, 2);
     graph.addEdge(3, 0);
 
-    ReducingToSATSolver solver = new ReducingToSATSolver(graph, 0, 3);
-    try {
-      List<Integer> hamPath = solver.solve();
-      if (hamPath == null) {
-        System.out.println("No hamiltonian path found!");
-      } else {
-        System.out.print("Hamiltonian path found: ");
-        for (int vertex : hamPath) {
-          System.out.print(vertex + " ");
-        }
-        System.out.println();
+    IHamPathSolver solver = new ReducingToSATSolver(graph, 0, 3);
+    List<Integer> hamPath = solver.solve();
+    if (hamPath == null) {
+      System.out.println("No hamiltonian path found!");
+    } else {
+      System.out.print("Hamiltonian path found: ");
+      for (int vertex : hamPath) {
+        System.out.print(vertex + " ");
       }
-    } catch (TimeoutException e) {
-      e.printStackTrace();
+      System.out.println();
     }
   }
 }
