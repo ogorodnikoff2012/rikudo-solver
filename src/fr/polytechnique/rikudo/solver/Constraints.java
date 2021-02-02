@@ -27,11 +27,11 @@ public class Constraints {
     }
 
     public boolean isAllowedVertex(int vertex, int position) {
-      if (pos_to_vertex_constraints.contains(position) && pos_to_vertex_constraints.get(position) != vertex) {
-        return false;
+      if (pos_to_vertex_constraints.containsKey(position) && pos_to_vertex_constraints.get(position) != vertex) {
+          return false;
       }
-      if (vertex_to_pos_constraints.contains(vertex) && vertex_to_pos_constraints.get(vertex) != position) {
-        return false;
+      if (vertex_to_pos_constraints.containsKey(vertex) && vertex_to_pos_constraints.get(vertex) != position) {
+          return false;
       }
       return true;
     }

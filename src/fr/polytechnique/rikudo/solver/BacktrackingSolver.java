@@ -1,6 +1,7 @@
 package fr.polytechnique.rikudo.solver;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class BacktrackingSolver implements IHamPathSolver {
@@ -8,45 +9,71 @@ public class BacktrackingSolver implements IHamPathSolver {
   private final IGraph graph;
   private final int source;
   private final int target;
-  private List<Integer> found_path;
-  private long path_cnt;
+  private final Constraints constraints;
+  private List<Integer> foundPath;
+  private long pathCnt;
 
-  public BacktrackingSolver(IGraph graph, int source, int target) {
+  public BacktrackingSolver(IGraph graph, int source, int target){
+    this(graph, source, target, new Constraints());
+  }
+
+  public BacktrackingSolver(IGraph graph, int source, int target, Constraints constraints) {
     this.graph = graph;
     this.source = source;
     this.target = target;
-    this.found_path = null;
-    this.path_cnt = 0;
+    this.foundPath = null;
+    this.pathCnt = 0;
+    this.constraints = constraints;
   }
 
   private void reset() {
-    found_path = null;
-    path_cnt = 0;
+    foundPath = null;
+    pathCnt = 0;
   }
 
-  private boolean find_path(int vertex, ArrayList<Integer> path, boolean[] is_visited,
-      int max_path_cnt) {
+  private List<Integer> applyDiamondConstraints(int vertex, boolean[] isVisited){
+    List<Integer> adjacentVertices = graph.adjacentVertices(vertex);
+    HashSet<Integer> diamonds = constraints.getDiamondedNeighbours(vertex);
+    if (diamonds == null){
+      return adjacentVertices;
+    }
+    HashSet<Integer> diamonds_tmp = new HashSet<>(diamonds);
+    diamonds.retainAll(adjacentVertices);
+    for (int vert : diamonds){
+      if (isVisited[vert]){
+        diamonds_tmp.remove(vert);
+      }
+    }
+    if (!diamonds_tmp.isEmpty()){
+      return new ArrayList<>(diamonds_tmp);
+    } else{
+      return adjacentVertices;
+    }
+  }
+
+  private boolean findPath(int vertex, ArrayList<Integer> path, boolean[] isVisited,
+      int maxPathCnt) {
     if (vertex == target) {
       if (path.size() == graph.size()) {
-        found_path = path;
-        ++path_cnt;
-        return max_path_cnt > 0 && path_cnt >= max_path_cnt;
+        foundPath = path;
+        ++pathCnt;
+        return maxPathCnt > 0 && pathCnt >= maxPathCnt;
       } else {
         return false;
       }
     }
 
-    List<Integer> adjacent_vertices = graph.adjacentVertices(vertex);
-    for (int adjacent_vert : adjacent_vertices) {
-      if (!is_visited[adjacent_vert]) {
-        is_visited[adjacent_vert] = true;
-        path.add(adjacent_vert);
+    List<Integer> adjacentVertices = applyDiamondConstraints(vertex, isVisited);
+    for (int adjacentVert : adjacentVertices) {
+      if (!isVisited[adjacentVert] && constraints.isAllowedVertex(adjacentVert, path.size())) {
+        isVisited[adjacentVert] = true;
+        path.add(adjacentVert);
 
-        if (find_path(adjacent_vert, path, is_visited, max_path_cnt)) {
+        if (findPath(adjacentVert, path, isVisited, maxPathCnt)) {
           return true;
         }
 
-        is_visited[adjacent_vert] = false;
+        isVisited[adjacentVert] = false;
         path.remove(path.size() - 1);
       }
     }
@@ -54,29 +81,29 @@ public class BacktrackingSolver implements IHamPathSolver {
     return false;
   }
 
-  private boolean find_path_trampoline(int max_path_cnt) {
-    boolean[] visited_vertices = new boolean[graph.size()];
-    visited_vertices[source] = true;
+  private boolean findPathTrampoline(int max_path_cnt) {
+    boolean[] visitedVertices = new boolean[graph.size()];
+    visitedVertices[source] = true;
     ArrayList<Integer> path = new ArrayList<>();
     path.add(source);
-    return find_path(source, path, visited_vertices, max_path_cnt);
+    return findPath(source, path, visitedVertices, max_path_cnt);
   }
 
   @Override
   public List<Integer> solve() {
     reset();
-    find_path_trampoline(1);
-    return found_path;
+    findPathTrampoline(1);
+    return foundPath;
   }
 
   public long count() {
     reset();
-    find_path_trampoline(0);
-    return path_cnt;
+    findPathTrampoline(0);
+    return pathCnt;
   }
 
   public static void main(String[] args) {
-    MatrixGraph graph = new MatrixGraph(4);
+    /*MatrixGraph graph = new MatrixGraph(4);
     graph.addEdge(0, 1);
     graph.addEdge(0, 2);
     graph.addEdge(1, 2);
@@ -86,6 +113,33 @@ public class BacktrackingSolver implements IHamPathSolver {
     graph.addEdge(3, 0);
 
     IHamPathSolver solver = new BacktrackingSolver(graph, 0, 3);
+    List<Integer> hamPath = solver.solve();
+    if (hamPath == null) {
+      System.out.println("No hamiltonian path found!");
+    } else {
+      System.out.print("Hamiltonian path found: ");
+      for (int vertex : hamPath) {
+        System.out.print(vertex + " ");
+      }
+      System.out.println();
+    }
+  }
+  */
+
+    AdjListGraph graph = new AdjListGraph(5);
+    for (int i = 0; i < graph.size(); ++i) {
+      for (int j = 0; j < graph.size(); ++j) {
+        if (i != j) {
+          graph.addEdge(i, j);
+        }
+      }
+    }
+
+    Constraints constraints = new Constraints();
+    constraints.addDiamondConstraint(0, 3);
+    constraints.addVertexConstraint(2,2);
+
+    IHamPathSolver solver = new BacktrackingSolver(graph, 0, graph.size() - 1, constraints);
     List<Integer> hamPath = solver.solve();
     if (hamPath == null) {
       System.out.println("No hamiltonian path found!");
