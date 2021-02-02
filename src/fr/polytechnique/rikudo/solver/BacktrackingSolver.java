@@ -9,18 +9,31 @@ public class BacktrackingSolver implements IHamPathSolver {
   private final int source;
   private final int target;
   private List<Integer> found_path;
+  private long path_cnt;
 
   public BacktrackingSolver(IGraph graph, int source, int target) {
     this.graph = graph;
     this.source = source;
     this.target = target;
     this.found_path = null;
+    this.path_cnt = 0;
   }
 
-  private boolean find_path(int vertex, ArrayList<Integer> path, boolean[] is_visited) {
-    if (vertex == target && path.size() == graph.size()) {
-      found_path = path;
-      return true;
+  private void reset() {
+    found_path = null;
+    path_cnt = 0;
+  }
+
+  private boolean find_path(int vertex, ArrayList<Integer> path, boolean[] is_visited,
+      int max_path_cnt) {
+    if (vertex == target) {
+      if (path.size() == graph.size()) {
+        found_path = path;
+        ++path_cnt;
+        return max_path_cnt > 0 && path_cnt >= max_path_cnt;
+      } else {
+        return false;
+      }
     }
 
     List<Integer> adjacent_vertices = graph.adjacentVertices(vertex);
@@ -29,7 +42,7 @@ public class BacktrackingSolver implements IHamPathSolver {
         is_visited[adjacent_vert] = true;
         path.add(adjacent_vert);
 
-        if (find_path(adjacent_vert, path, is_visited)) {
+        if (find_path(adjacent_vert, path, is_visited, max_path_cnt)) {
           return true;
         }
 
@@ -41,14 +54,25 @@ public class BacktrackingSolver implements IHamPathSolver {
     return false;
   }
 
-  @Override
-  public List<Integer> solve() {
+  private boolean find_path_trampoline(int max_path_cnt) {
     boolean[] visited_vertices = new boolean[graph.size()];
     visited_vertices[source] = true;
     ArrayList<Integer> path = new ArrayList<>();
     path.add(source);
-    find_path(source, path, visited_vertices);
+    return find_path(source, path, visited_vertices, max_path_cnt);
+  }
+
+  @Override
+  public List<Integer> solve() {
+    reset();
+    find_path_trampoline(1);
     return found_path;
+  }
+
+  public long count() {
+    reset();
+    find_path_trampoline(0);
+    return path_cnt;
   }
 
   public static void main(String[] args) {
