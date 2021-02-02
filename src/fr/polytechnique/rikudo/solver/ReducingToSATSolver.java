@@ -14,6 +14,12 @@ public class ReducingToSATSolver implements IHamPathSolver {
   private final IGraph graph;
   private final int source;
   private final int target;
+  private final Mode mode;
+
+  public static enum Mode {
+    E_MODE_PATH,
+    E_MODE_CYCLE,
+  }
 
   private int encodeVariable(int index, int vertex) {
     return index * graph.size() + vertex + 1;
@@ -28,9 +34,14 @@ public class ReducingToSATSolver implements IHamPathSolver {
   }
 
   public ReducingToSATSolver(IGraph graph, int source, int target) {
+    this(graph, source, target, Mode.E_MODE_PATH);
+  }
+
+  public ReducingToSATSolver(IGraph graph, int source, int target, Mode mode) {
     this.graph = graph;
     this.source = source;
     this.target = target;
+    this.mode = mode;
   }
 
   @Override
@@ -81,12 +92,19 @@ public class ReducingToSATSolver implements IHamPathSolver {
             satSolver
                 .addClause(new VecInt(new int[]{-encodeVariable(i, u), -encodeVariable(i + 1, v)}));
           }
+
+          if (mode == Mode.E_MODE_CYCLE) {
+            satSolver
+                .addClause(new VecInt(new int[]{-encodeVariable(graph.size() - 1, u), -encodeVariable(0, v)}));
+          }
         }
       }
 
-      // The first vertex should be the source and the last vertex should be the target
-      satSolver.addClause(new VecInt(1, encodeVariable(0, source)));
-      satSolver.addClause(new VecInt(1, encodeVariable(graph.size() - 1, target)));
+      if (mode == Mode.E_MODE_PATH) {
+        // The first vertex should be the source and the last vertex should be the target
+        satSolver.addClause(new VecInt(1, encodeVariable(0, source)));
+        satSolver.addClause(new VecInt(1, encodeVariable(graph.size() - 1, target)));
+      }
     } catch (ContradictionException e) {
       return null;
     }
