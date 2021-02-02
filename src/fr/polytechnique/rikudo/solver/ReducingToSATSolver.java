@@ -1,6 +1,9 @@
 package fr.polytechnique.rikudo.solver;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.List;
 import org.sat4j.core.VecInt;
 import org.sat4j.minisat.SolverFactory;
@@ -14,6 +17,7 @@ public class ReducingToSATSolver implements IHamPathSolver {
   private final IGraph graph;
   private final int source;
   private final int target;
+  private final Constraints constraints;
   private final Mode mode;
 
   public static enum Mode {
@@ -38,10 +42,15 @@ public class ReducingToSATSolver implements IHamPathSolver {
   }
 
   public ReducingToSATSolver(IGraph graph, int source, int target, Mode mode) {
+    this(graph, source, target, mode, new Constraints());
+  }
+
+  public ReducingToSATSolver(IGraph graph, int source, int target, Mode mode, Constraints constraints) {
     this.graph = graph;
     this.source = source;
     this.target = target;
     this.mode = mode;
+    this.constraints = constraints;
   }
 
   @Override
@@ -105,6 +114,42 @@ public class ReducingToSATSolver implements IHamPathSolver {
         satSolver.addClause(new VecInt(1, encodeVariable(0, source)));
         satSolver.addClause(new VecInt(1, encodeVariable(graph.size() - 1, target)));
       }
+
+      // Applying constraints
+      Hashtable<Integer, Integer> vertex_to_pos = constraints.getVertexConstraints();
+      for (int vertex : vertex_to_pos.keySet()) {
+        int pos = vertex_to_pos.get(vertex);
+        satSolver.addClause(new VecInt(1, encodeVariable(pos, vertex)));
+      }
+
+      for (int v = 0; v < graph.size(); ++v) {
+        HashSet<Integer> diamonds = constraints.getDiamondedNeighbours(v);
+        for (int u  : diamonds) {
+          for (int i = 1; i < graph.size() - 1; ++i) {
+            satSolver.addClause(new VecInt(new int[]{
+                -encodeVariable(i,v), encodeVariable(i + 1, u), encodeVariable(i - 1, u)
+            }));
+          }
+
+          if (mode == Mode.E_MODE_PATH) {
+            satSolver.addClause(new VecInt(new int[]{
+                -encodeVariable(0, v), encodeVariable(1, u)
+            }));
+            satSolver.addClause(new VecInt(new int[]{
+                -encodeVariable(graph.size() - 1, v), encodeVariable(graph.size() - 2, u)
+            }));
+          } else if (mode == Mode.E_MODE_CYCLE) {
+            satSolver.addClause(new VecInt(new int[]{
+                -encodeVariable(0, v), encodeVariable(1, u), encodeVariable(graph.size() - 1, u)
+            }));
+            satSolver.addClause(new VecInt(new int[]{
+                -encodeVariable(graph.size() - 1, v), encodeVariable(graph.size() - 2, u), encodeVariable(0, u)
+            }));
+          }
+        }
+      }
+
+
     } catch (ContradictionException e) {
       return null;
     }
