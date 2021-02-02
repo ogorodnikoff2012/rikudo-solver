@@ -182,16 +182,20 @@ public class ReducingToSATSolver implements IHamPathSolver {
   }
 
   public static void main(String[] args) {
-    AdjListGraph graph = new AdjListGraph(4);
-    graph.addEdge(0, 1);
-    graph.addEdge(1, 0);
-    graph.addEdge(1, 2);
-    graph.addEdge(2, 1);
-    graph.addEdge(2, 3);
-    graph.addEdge(3, 2);
-    graph.addEdge(3, 0);
+    AdjListGraph graph = new AdjListGraph(5);
+    for (int i = 0; i < graph.size(); ++i) {
+      for (int j = 0; j < graph.size(); ++j) {
+        if (i != j) {
+          graph.addEdge(i, j);
+        }
+      }
+    }
 
-    IHamPathSolver solver = new ReducingToSATSolver(graph, 0, 3);
+    Constraints constraints = new Constraints();
+    constraints.addDiamondConstraint(1, 3);
+    constraints.addVertexConstraint(2,3);
+
+    IHamPathSolver solver = new ReducingToSATSolver(graph, 0, graph.size() - 1, Mode.E_MODE_PATH, constraints);
     List<Integer> hamPath = solver.solve();
     if (hamPath == null) {
       System.out.println("No hamiltonian path found!");
