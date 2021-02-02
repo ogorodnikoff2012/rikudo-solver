@@ -124,6 +124,9 @@ public class ReducingToSATSolver implements IHamPathSolver {
 
       for (int v = 0; v < graph.size(); ++v) {
         HashSet<Integer> diamonds = constraints.getDiamondedNeighbours(v);
+        if (diamonds == null) {
+          continue;
+        }
         for (int u  : diamonds) {
           for (int i = 1; i < graph.size() - 1; ++i) {
             satSolver.addClause(new VecInt(new int[]{
