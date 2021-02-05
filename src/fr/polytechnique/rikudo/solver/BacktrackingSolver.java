@@ -37,15 +37,15 @@ public class BacktrackingSolver implements IHamPathSolver {
     if (diamonds == null){
       return adjacentVertices;
     }
-    HashSet<Integer> diamonds_tmp = new HashSet<>(diamonds);
+    HashSet<Integer> diamondsTmp = new HashSet<>(diamonds);
     diamonds.retainAll(adjacentVertices);
     for (int vert : diamonds){
       if (isVisited[vert]){
-        diamonds_tmp.remove(vert);
+        diamondsTmp.remove(vert);
       }
     }
-    if (!diamonds_tmp.isEmpty()){
-      return new ArrayList<>(diamonds_tmp);
+    if (!diamondsTmp.isEmpty()){
+      return new ArrayList<>(diamondsTmp);
     } else{
       return adjacentVertices;
     }

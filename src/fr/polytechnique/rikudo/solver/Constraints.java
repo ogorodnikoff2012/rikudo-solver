@@ -26,6 +26,16 @@ public class Constraints {
       addToTable(v2, v1);
     }
 
+    public void removeVertexConstraint(int vertex, int position){
+        pos_to_vertex_constraints.remove(position);
+        vertex_to_pos_constraints.remove(vertex);
+    }
+
+    public void removeDiamondConstraint(int v1, int v2) {
+        diamond_constraints.get(v1).remove(v2);
+        diamond_constraints.get(v2).remove(v1);
+    }
+
     public boolean isAllowedVertex(int vertex, int position) {
       if (pos_to_vertex_constraints.containsKey(position) && pos_to_vertex_constraints.get(position) != vertex) {
           return false;
@@ -38,6 +48,10 @@ public class Constraints {
 
     public Hashtable<Integer, Integer> getVertexConstraints() {
           return vertex_to_pos_constraints;
+    }
+
+    public Hashtable<Integer, HashSet<Integer>> getDiamondConstraints() {
+        return diamond_constraints;
     }
 
     public HashSet<Integer> getDiamondedNeighbours(int vertex) {
