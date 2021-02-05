@@ -40,6 +40,10 @@ public class Constraints {
           return vertex_to_pos_constraints;
     }
 
+    public Integer getVertexByPos(int pos) {
+      return pos_to_vertex_constraints.get(pos);
+    }
+
     public HashSet<Integer> getDiamondedNeighbours(int vertex) {
       return diamond_constraints.get(vertex);
     }
