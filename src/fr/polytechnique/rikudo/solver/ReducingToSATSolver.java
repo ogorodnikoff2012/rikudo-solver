@@ -194,6 +194,7 @@ public class ReducingToSATSolver implements IHamPathSolver {
     Constraints constraints = new Constraints();
     constraints.addDiamondConstraint(1, 3);
     constraints.addVertexConstraint(2,3);
+    constraints.addVertexConstraint(3, 2);
 
     IHamPathSolver solver = new ReducingToSATSolver(graph, 0, graph.size() - 1, Mode.E_MODE_PATH, constraints);
     List<Integer> hamPath = solver.solve();

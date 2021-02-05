@@ -52,7 +52,7 @@ public class BacktrackingSolver implements IHamPathSolver {
   }
 
   private boolean findPath(int vertex, ArrayList<Integer> path, boolean[] isVisited,
-      int maxPathCnt) {
+      long maxPathCnt) {
     if (vertex == target) {
       if (path.size() == graph.size()) {
         foundPath = path;
@@ -81,7 +81,7 @@ public class BacktrackingSolver implements IHamPathSolver {
     return false;
   }
 
-  private boolean findPathTrampoline(int max_path_cnt) {
+  private boolean findPathTrampoline(long max_path_cnt) {
     boolean[] visitedVertices = new boolean[graph.size()];
     visitedVertices[source] = true;
     ArrayList<Integer> path = new ArrayList<>();
@@ -100,6 +100,14 @@ public class BacktrackingSolver implements IHamPathSolver {
     reset();
     findPathTrampoline(0);
     return pathCnt;
+  }
+
+  public List<Integer> findKth(long k) {
+    reset();
+    if (!findPathTrampoline(k)) {
+      return null;
+    }
+    return foundPath;
   }
 
   public static void main(String[] args) {

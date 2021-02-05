@@ -1,9 +1,11 @@
 package fr.polytechnique.rikudo.benchmark;
 
 import fr.polytechnique.rikudo.solver.BacktrackingSolver;
+import fr.polytechnique.rikudo.solver.Constraints;
 import fr.polytechnique.rikudo.solver.IGraph;
 import fr.polytechnique.rikudo.solver.IHamPathSolver;
 import fr.polytechnique.rikudo.solver.ReducingToSATSolver;
+import fr.polytechnique.rikudo.solver.ReducingToSATSolver.Mode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,23 +14,29 @@ public class Benchmark {
     public final IGraph graph;
     public final int source;
     public final int target;
+    public final Constraints constraints;
 
     public ProblemInstance(IGraph graph, int source, int target) {
+      this(graph, source, target, new Constraints());
+    }
+
+    public ProblemInstance(IGraph graph, int source, int target, Constraints constraints) {
       this.graph = graph;
       this.source = source;
       this.target = target;
+      this.constraints = constraints;
     }
   }
 
-  private static List<IHamPathSolver> buildSolvers(IGraph graph, int source, int target) {
+  private static List<IHamPathSolver> buildSolvers(IGraph graph, int source, int target, Constraints constraints) {
     ArrayList<IHamPathSolver> solvers = new ArrayList<>();
-    solvers.add(new ReducingToSATSolver(graph, source, target));
-    solvers.add(new BacktrackingSolver(graph, source, target));
+    solvers.add(new ReducingToSATSolver(graph, source, target, Mode.E_MODE_PATH, constraints));
+    solvers.add(new BacktrackingSolver(graph, source, target, constraints));
     return solvers;
   }
 
   private static List<IHamPathSolver> buildSolvers(ProblemInstance problem) {
-    return buildSolvers(problem.graph, problem.source, problem.target);
+    return buildSolvers(problem.graph, problem.source, problem.target, problem.constraints);
   }
 
   private static void fullGraphTest() {
