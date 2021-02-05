@@ -16,7 +16,7 @@ public class GraphReader {
     this.constraintsPath = constraintsPath;
   }
 
-  IGraph readGraph() throws IOException {
+  private IGraph readGraph() throws IOException {
     Scanner scanner = new Scanner(new FileInputStream(graphPath));
     int vertexCount = scanner.nextInt();
     int edgeCount = scanner.nextInt();
@@ -32,7 +32,7 @@ public class GraphReader {
     return graph;
   }
 
-  Constraints readConstraints() throws IOException {
+  private Constraints readConstraints() throws IOException {
     Scanner scanner = new Scanner(new FileInputStream(constraintsPath));
     Constraints constraints = new Constraints();
 
@@ -54,7 +54,7 @@ public class GraphReader {
     return constraints;
   }
 
-  ProblemInstance readProblem() {
+  public ProblemInstance readProblem() {
     try {
       IGraph graph = readGraph();
       Constraints constraints = readConstraints();
