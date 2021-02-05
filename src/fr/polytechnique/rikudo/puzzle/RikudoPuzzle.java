@@ -1,7 +1,9 @@
 package fr.polytechnique.rikudo.puzzle;
 
+import fr.polytechnique.rikudo.benchmark.Benchmark.ProblemInstance;
 import fr.polytechnique.rikudo.solver.BacktrackingSolver;
 import fr.polytechnique.rikudo.solver.Constraints;
+import fr.polytechnique.rikudo.solver.GraphReader;
 import fr.polytechnique.rikudo.solver.IGraph;
 
 import java.util.*;
@@ -31,13 +33,17 @@ public class RikudoPuzzle {
 
     public boolean isMinimal() {
         Hashtable<Integer, Integer> vertexConstraints = constraints.getVertexConstraints();
-        Set<Integer> setOfVertices = vertexConstraints.keySet();
+        Set<Integer> setOfVertices = new HashSet<Integer>(vertexConstraints.keySet());
 
         for(Integer vertex : setOfVertices) {
+            if (vertex == source || vertex == target) {
+                continue;
+            }
             int position = vertexConstraints.get(vertex);
             constraints.removeVertexConstraint(vertex, position);
             if (verifyUniqueness()) {
                 constraints.addVertexConstraint(vertex, position);
+                System.err.println("Vertex constraint " + vertex + " " + position);
                 return false;
             }
             else {
@@ -46,7 +52,7 @@ public class RikudoPuzzle {
         }
 
         Hashtable<Integer, HashSet<Integer>> diamondConstraints = constraints.getDiamondConstraints();
-        Set<Integer> listOfDiamonds = diamondConstraints.keySet();
+        Set<Integer> listOfDiamonds = new HashSet(diamondConstraints.keySet());
 
         for (Integer v1 : listOfDiamonds) {
             HashSet<Integer> neighbours = diamondConstraints.get(v1);
@@ -57,6 +63,7 @@ public class RikudoPuzzle {
                 constraints.removeDiamondConstraint(v1, v2);
                 if (verifyUniqueness()) {
                     constraints.addDiamondConstraint(v1, v2);
+                    System.err.println("Diamond constraint " + v1 + " " + v2);
                     return false;
                 }
                 else {
@@ -67,4 +74,25 @@ public class RikudoPuzzle {
         return true;
     }
 
+    public static void main(String[] args) {
+        GraphReader reader = new GraphReader("riXkudo_graph.txt", "riXkudo_constraints.txt");
+        ProblemInstance instance = reader.readProblem();
+
+        BacktrackingSolver solver = new BacktrackingSolver(instance.graph, instance.source,
+            instance.target, instance.constraints);
+        long solutionCount = solver.count();
+        System.out.println("Solution cnt: " + solutionCount);
+        for (long i = 0; i < solutionCount; ++i) {
+            List<Integer> solution = solver.findKth(i + 1);
+            for (int x : solution) {
+                System.out.print(x + " ");
+            }
+            System.out.println();
+        }
+
+        RikudoPuzzle puzzle = new RikudoPuzzle(instance.graph, instance.source, instance.target,
+            instance.constraints);
+        System.out.println("Is unique:  " + puzzle.verifyUniqueness());
+        System.out.println("Is minimal: " + puzzle.isMinimal());
+    }
 }
