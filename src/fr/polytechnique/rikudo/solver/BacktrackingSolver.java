@@ -62,7 +62,7 @@ public class BacktrackingSolver implements IHamPathSolver {
         return false;
       }
     }
-
+    //System.out.println(path);
     List<Integer> adjacentVertices = applyDiamondConstraints(vertex, isVisited);
     for (int adjacentVert : adjacentVertices) {
       if (!isVisited[adjacentVert] && constraints.isAllowedVertex(adjacentVert, path.size())) {
