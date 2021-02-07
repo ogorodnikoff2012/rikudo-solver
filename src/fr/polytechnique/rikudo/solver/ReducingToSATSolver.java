@@ -53,8 +53,7 @@ public class ReducingToSATSolver implements IHamPathSolver {
     this.constraints = constraints;
   }
 
-  @Override
-  public List<Integer> solve() {
+  private ISolver prepareSolver() {
     ISolver satSolver = SolverFactory.newDefault();
 
     try {
@@ -152,8 +151,14 @@ public class ReducingToSATSolver implements IHamPathSolver {
         }
       }
 
-
+      return satSolver;
     } catch (ContradictionException e) {
+      return null;
+    }
+  }
+
+  private List<Integer> solveHelper(ISolver satSolver) {
+    if (satSolver == null) {
       return null;
     }
 
@@ -178,6 +183,39 @@ public class ReducingToSATSolver implements IHamPathSolver {
       }
     } catch (TimeoutException e) {
       return null;
+    }
+  }
+
+  @Override
+  public List<Integer> solve() {
+    ISolver satSolver = prepareSolver();
+    return solveHelper(satSolver);
+  }
+
+  public boolean verifyUniqueness(List<Integer> path) {
+    ISolver satSolver = prepareSolver();
+    if (satSolver == null) {
+      return false;
+    }
+
+    // Forbid the found solution
+    int restriction[] = new int[path.size()];
+    for (int i = 0; i < path.size(); ++i) {
+      int v = path.get(i);
+      restriction[i] = -encodeVariable(i, v);
+    }
+    try {
+      satSolver.addClause(new VecInt(restriction));
+    } catch (ContradictionException e) {
+      // e.printStackTrace();
+      return true;
+    }
+
+    try {
+      return !satSolver.isSatisfiable();
+    } catch (TimeoutException e) {
+      e.printStackTrace();
+      return false;
     }
   }
 
