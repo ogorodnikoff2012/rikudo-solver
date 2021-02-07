@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <entry key="allow-vertex-constraints">true</entry>
+  <entry key="allow-diamond-constraints">true</entry>
+  <entry key="output-side-length">25.0</entry>
+  <entry key="input-side-length">20.0</entry>
+  <entry key="input-file">bowtie.png</entry>
+  <entry key="output-file">puzzles/bowtiePuzzle.png</entry>
+  <entry key="solution-file">puzzles/bowtieSolution.png</entry>
+</properties>

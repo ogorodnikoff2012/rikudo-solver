@@ -111,29 +111,6 @@ public class BacktrackingSolver implements IHamPathSolver {
   }
 
   public static void main(String[] args) {
-    /*MatrixGraph graph = new MatrixGraph(4);
-    graph.addEdge(0, 1);
-    graph.addEdge(0, 2);
-    graph.addEdge(1, 2);
-    graph.addEdge(1, 3);
-    graph.addEdge(2, 1);
-    graph.addEdge(2, 3);
-    graph.addEdge(3, 0);
-
-    IHamPathSolver solver = new BacktrackingSolver(graph, 0, 3);
-    List<Integer> hamPath = solver.solve();
-    if (hamPath == null) {
-      System.out.println("No hamiltonian path found!");
-    } else {
-      System.out.print("Hamiltonian path found: ");
-      for (int vertex : hamPath) {
-        System.out.print(vertex + " ");
-      }
-      System.out.println();
-    }
-  }
-  */
-
     AdjListGraph graph = new AdjListGraph(5);
     for (int i = 0; i < graph.size(); ++i) {
       for (int j = 0; j < graph.size(); ++j) {

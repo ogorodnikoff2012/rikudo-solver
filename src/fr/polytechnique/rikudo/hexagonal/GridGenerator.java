@@ -12,15 +12,19 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.Rectangle2D.Double;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Properties;
 import java.util.Queue;
 import java.util.Random;
 import javax.imageio.ImageIO;
@@ -66,9 +70,50 @@ public class GridGenerator {
       this.designProperties = designProperties;
       this.palette = palette;
     }
-  };
 
-  public static enum VisualisationMode {
+    void storeToXML(OutputStream output) throws IOException {
+      Properties properties = new Properties();
+
+      properties.setProperty("input-file", inputFile.getCanonicalPath());
+      properties.setProperty("output-file", outputFile.getCanonicalPath());
+      properties.setProperty("solution-file", solutionFile.getCanonicalPath());
+      properties.setProperty("input-side-length", inputSideLength + "");
+      properties.setProperty("output-side-length", outputSideLength + "");
+      properties.setProperty("allow-vertex-constraints", designProperties.isEnableVertexConstraints() + "");
+      properties.setProperty("allow-diamond-constraints", designProperties.isEnableDiamondConstraints() + "");
+
+      properties.storeToXML(output, "");
+    }
+
+    static GridGeneratorProperties loadFromXML(InputStream input) throws IOException {
+      Properties properties = new Properties();
+      properties.loadFromXML(input);
+
+      File inputFile = new File(properties.getProperty("input-file"));
+      File outputFile = new File(properties.getProperty("output-file"));
+      File solutionFile = new File(properties.getProperty("solution-file"));
+      double inputSideLength = Double.parseDouble(properties.getProperty("input-side-length"));
+      double outputSideLength = Double.parseDouble(properties.getProperty("output-side-length"));
+      boolean allowVertexConstraints = Boolean.parseBoolean(properties.getProperty("allow-vertex-constraints"));
+      boolean allowDiamondConstraints = Boolean.parseBoolean(properties.getProperty("allow-diamond-constraints"));
+
+      DesignProperties designProperties = new DesignProperties();
+      designProperties.setEnableVertexConstraints(allowVertexConstraints);
+      designProperties.setEnableDiamondConstraints(allowDiamondConstraints);
+
+      return new GridGeneratorProperties(
+          inputFile,
+          outputFile,
+          solutionFile,
+          inputSideLength,
+          outputSideLength,
+          designProperties,
+          Palette.DEFAULT_PALETTE
+      );
+    }
+  }
+
+  public enum VisualisationMode {
     E_MODE_PUZZLE,
     E_MODE_SOLUTION
   }
@@ -139,7 +184,7 @@ public class GridGenerator {
           continue;
         }
 
-        HashSet<Cell> cells = getAllCells(new Double(x, y, 1, 1));
+        HashSet<Cell> cells = getAllCells(new Rectangle2D.Double(x, y, 1, 1));
         result.addAll(cells);
       }
     }
@@ -288,31 +333,56 @@ public class GridGenerator {
   }
 
   public static void main(String[] args) throws IOException {
-    // if (args.length != 2) {
-    //   System.err.println("Usage: ./prog <path_to_image> <side_length>");
-    //   System.exit(1);
-    // }
-
-    String[] names = new String[]{
-        "bowtie",
-        "christmasTree",
-        "X",
-    };
-
-    for (String name : names) {
-      System.out.println("Pattern: " + name);
-      GridGeneratorProperties properties = new GridGeneratorProperties(
-          new File(name + ".png"),
-          new File(name + "Puzzle.png"),
-          new File(name + "Solution.png"),
+    if (args.length == 0) {
+      System.err.println("Usage: prog settings1.xml settings2.xml ... settingsN.xml");
+      GridGeneratorProperties exampleProperties = new GridGeneratorProperties(
+          new File("mask.png"),
+          new File("puzzle.png"),
+          new File("solution.png"),
           20,
           25,
           new DesignProperties(),
           Palette.DEFAULT_PALETTE
       );
+      System.err.println("Example:");
+      exampleProperties.storeToXML(System.err);
+      System.exit(1);
+    }
 
-      GridGenerator generator = new GridGenerator(properties); // Double.parseDouble(args[1]));
+    for (String filename : args) {
+      System.out.println("Reading " + filename);
+      GridGeneratorProperties properties = GridGeneratorProperties.loadFromXML(new FileInputStream(filename));
+      GridGenerator generator = new GridGenerator(properties);
       generator.buildPuzzle();
     }
   }
+
+  // public static void main(String[] args) throws IOException {
+  //   // if (args.length != 2) {
+  //   //   System.err.println("Usage: ./prog <path_to_image> <side_length>");
+  //   //   System.exit(1);
+  //   // }
+
+  //   String[] names = new String[]{
+  //       "bowtie",
+  //       "christmasTree",
+  //       "X",
+  //   };
+
+  //   for (String name : names) {
+  //     System.out.println("Pattern: " + name);
+  //     GridGeneratorProperties properties = new GridGeneratorProperties(
+  //         new File(name + ".png"),
+  //         new File(name + "Puzzle.png"),
+  //         new File(name + "Solution.png"),
+  //         20,
+  //         25,
+  //         new DesignProperties(),
+  //         Palette.DEFAULT_PALETTE
+  //     );
+
+  //     GridGenerator generator = new GridGenerator(properties); // Double.parseDouble(args[1]));
+  //     generator.buildPuzzle();
+  //   }
+  // }
 }
